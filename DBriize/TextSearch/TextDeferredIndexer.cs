@@ -25,7 +25,7 @@ namespace DBriize.TextSearch
         TrieSettings LTrieSettings = null;
         IStorage Storage = null;
         LTrie LTrie = null;
-        static string TableFileName = "_DBriizeTextIndexer";
+        static string TableFileName = "_DBreezeTextIndexer";
         object lock_operation = new object();
         long init = DateTime.UtcNow.Ticks;
         int inDeferredIndexer = 0;
@@ -40,7 +40,7 @@ namespace DBriize.TextSearch
             };
             Storage = new StorageLayer(Path.Combine(engine.MainFolder, TableFileName), LTrieSettings, engine.Configuration);
             LTrie = new LTrie(Storage);
-            LTrie.TableName = "DBriize.TextIndexer";
+            LTrie.TableName = "DBreeze.TextIndexer";
 
             if (LTrie.Storage.Length > 100000)  //Recreating file if its size more then 100KB and it is empty
             {
@@ -51,7 +51,7 @@ namespace DBriize.TextSearch
 
                     Storage = new StorageLayer(Path.Combine(engine.MainFolder, TableFileName), LTrieSettings, engine.Configuration);
                     LTrie = new LTrie(Storage);
-                    LTrie.TableName = "DBriize.TextIndexer";
+                    LTrie.TableName = "DBreeze.TextIndexer";
                 }
             }
 

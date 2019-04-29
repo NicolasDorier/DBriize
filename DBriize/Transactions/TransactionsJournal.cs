@@ -22,7 +22,7 @@ namespace DBriize.Transactions
     public class TransactionsJournal : IDisposable
     {
         internal DBriizeEngine Engine=null;
-        static string JournalFileName = "_DBriizeTranJrnl";
+        static string JournalFileName = "_DBreezeTranJrnl";
 
         TrieSettings LTrieSettings = null;
         IStorage Storage = null;
@@ -67,7 +67,7 @@ namespace DBriize.Transactions
                  //Storage = new TrieDiskStorage(Path.Combine(Engine.MainFolder, JournalFileName), LTrieSettings, Engine.Configuration);
                  LTrie = new LTrie(Storage);
 
-                 LTrie.TableName = "DBriize.TranJournal";
+                 LTrie.TableName = "DBreeze.TranJournal";
 
                  this.RestoreNotFinishedTransactions();
             }
@@ -288,7 +288,7 @@ namespace DBriize.Transactions
                        
                         Storage = new StorageLayer(Path.Combine(Engine.MainFolder, JournalFileName), LTrieSettings, Engine.Configuration);                        
                         LTrie = new LTrie(Storage);
-                        LTrie.TableName = "DBriize.TranJournal";
+                        LTrie.TableName = "DBreeze.TranJournal";
                     }
                 }
 

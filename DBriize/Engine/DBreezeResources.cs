@@ -30,7 +30,7 @@ namespace DBriize
         TrieSettings LTrieSettings = null;
         IStorage Storage = null;
         LTrie LTrie = null;
-        static string TableFileName = "_DBriizeResources";        
+        static string TableFileName = "_DBreezeResources";        
         long init = DateTime.UtcNow.Ticks;        
         int disposed = 0;
 
@@ -57,7 +57,7 @@ namespace DBriize
             };
             Storage = new StorageLayer(Path.Combine(engine.MainFolder, TableFileName), LTrieSettings, engine.Configuration);
             LTrie = new LTrie(Storage);
-            LTrie.TableName = "DBriizeResources";
+            LTrie.TableName = "DBreezeResources";
         }
 
         /// <summary>

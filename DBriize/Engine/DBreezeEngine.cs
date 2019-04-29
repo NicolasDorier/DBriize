@@ -219,7 +219,7 @@ namespace DBriize
             //    return;
 
             DBisOperable = false;
-            DBisOperableReason = "DBriizeEngine.Dispose";
+            DBisOperableReason = "DBreezeEngine.Dispose";
             //Disposed = true;
 
             //Disposing all transactions

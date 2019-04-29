@@ -31,7 +31,7 @@ namespace DBriize
         /// </summary>
         internal bool AutoCloseOpenTables = true;
 
-        static string SchemaFileName = "_DBriizeSchema";
+        static string SchemaFileName = "_DBreezeSchema";
 
         //For System Tables or Records we reserve "@@@@" sequence
         static string LastFileNumberKeyName = "@@@@LastFileNumber";
@@ -108,7 +108,7 @@ namespace DBriize
 
             LTrie = new LTrie(Storage);
 
-            LTrie.TableName = "DBriize.Scheme";
+            LTrie.TableName = "DBreeze.Scheme";
 
             //Reading lastFileNumber
             ReadUserLastFileNumber();

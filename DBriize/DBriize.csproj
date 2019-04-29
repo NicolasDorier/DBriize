@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>DBriize</RootNamespace>
-    <Version>1.0.0.2</Version>
+    <Version>1.0.0.3</Version>
     <LangVersion>7.3</LangVersion>
     <PackageId>DBriize</PackageId>
     <Description>A copy of the DBreeze project based on modern .NET practices (Original project: https://github.com/hhblaze/DBreeze)</Description>
