@@ -130,13 +130,13 @@ namespace DBriize.Storage
             {
                 switch (fileName)
                 {
-                    case "_DBriizeSchema":
+                    case "_DBreezeSchema":
                         return UInt64.MaxValue - 1;
-                    case "_DBriizeTranJrnl":
+                    case "_DBreezeTranJrnl":
                         return UInt64.MaxValue - 2;
-                    case "_DBriizeTextIndexer":
+                    case "_DBreezeTextIndexer":
                         return UInt64.MaxValue - 3;
-                    case "_DBriizeResources":
+                    case "_DBreezeResources":
                         return UInt64.MaxValue - 4;
                     default:
                         return Convert.ToUInt64(fileName);
@@ -154,13 +154,13 @@ namespace DBriize.Storage
                 switch (filenumber)
                 {
                     case (UInt64.MaxValue - 1):
-                        return "_DBriizeSchema";
+                        return "_DBreezeSchema";
                     case (UInt64.MaxValue - 2):
-                        return "_DBriizeTranJrnl";
+                        return "_DBreezeTranJrnl";
                     case (UInt64.MaxValue - 3):
-                        return "_DBriizeTextIndexer";
+                        return "_DBreezeTextIndexer";
                     case (UInt64.MaxValue - 4):
-                        return "_DBriizeResources";
+                        return "_DBreezeResources";
                     default:
                         return filenumber.ToString();
                 }
