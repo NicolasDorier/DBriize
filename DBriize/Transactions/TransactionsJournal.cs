@@ -31,7 +31,7 @@ namespace DBriize.Transactions
         object lock_transactionNumber = new object();
         ulong _transactionNumber = 0;
 
-        DbReaderWriterLock _sync_transactionsTables = new DbReaderWriterLock();
+        DbReaderWriterLock _sync_transactionsTables;
 
         /// <summary>
         /// We try to clear tranasction file, when its length is more then 10MB and if it's possible
@@ -49,8 +49,9 @@ namespace DBriize.Transactions
         public TransactionsJournal(DBriizeEngine DBriizeEngine)
         {
             Engine = DBriizeEngine;
+			_sync_transactionsTables = new DbReaderWriterLock(Engine.Configuration.IsSingleThread);
 
-            this.Init();
+			this.Init();
         }
 
         private void Init()
@@ -65,7 +66,7 @@ namespace DBriize.Transactions
 
                 Storage = new StorageLayer(Path.Combine(Engine.MainFolder, JournalFileName), LTrieSettings, Engine.Configuration);
                  //Storage = new TrieDiskStorage(Path.Combine(Engine.MainFolder, JournalFileName), LTrieSettings, Engine.Configuration);
-                 LTrie = new LTrie(Storage);
+                 LTrie = new LTrie(Storage, Engine.Configuration.IsSingleThread);
 
                  LTrie.TableName = "DBreeze.TranJournal";
 
@@ -150,7 +151,7 @@ namespace DBriize.Transactions
                         ltrSet = new TrieSettings();     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   MUST BE TAKEN FROM SCHEMA, FOR NOW DEFAULT
                         //storage = new TrieDiskStorage(physicalPathToTheUserTable, ltrSet, Engine.Configuration);
                         storage = new StorageLayer(physicalPathToTheUserTable, ltrSet, Engine.Configuration);
-                        ltrie = new LTrie(storage);
+                        ltrie = new LTrie(storage, Engine.Configuration.IsSingleThread);
 
                         //closing trie, that Schema could open it again
                         ltrie.Dispose();
@@ -287,7 +288,7 @@ namespace DBriize.Transactions
                         LTrie.Dispose();
                        
                         Storage = new StorageLayer(Path.Combine(Engine.MainFolder, JournalFileName), LTrieSettings, Engine.Configuration);                        
-                        LTrie = new LTrie(Storage);
+                        LTrie = new LTrie(Storage, Engine.Configuration.IsSingleThread);
                         LTrie.TableName = "DBreeze.TranJournal";
                     }
                 }

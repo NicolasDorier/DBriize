@@ -15,20 +15,15 @@ namespace DBriize.Utils
 
         System.Threading.ManualResetEvent gate = null;
 
-        /// <summary>
-        /// Creates open Gate
-        /// </summary>
-        public DbThreadsGator()
+        public DbThreadsGator(bool gateIsOpen, bool isSingleThread)
         {
-            gate = new System.Threading.ManualResetEvent(true);
-        }
-
-        public DbThreadsGator(bool gateIsOpen)
-        {
-            if (gateIsOpen)
-                gate = new System.Threading.ManualResetEvent(true);
-            else
-                gate = new System.Threading.ManualResetEvent(false);
+			if (!isSingleThread)
+			{
+				if (gateIsOpen)
+					gate = new System.Threading.ManualResetEvent(true);
+				else
+					gate = new System.Threading.ManualResetEvent(false);
+			}
         }
 
         /// <summary>
@@ -37,17 +32,7 @@ namespace DBriize.Utils
         /// <returns></returns>
         public bool PutGateHere()
         {
-            return gate.WaitOne();
-        }
-
-        /// <summary>
-        /// If gate is closed then it will be closed timeout time in milliseconds
-        /// </summary>
-        /// <param name="milliseconds"></param>
-        /// <returns></returns>
-        public bool PutGateHere(int milliseconds)
-        {
-            return gate.WaitOne(milliseconds);
+            return gate == null || gate.WaitOne();
         }
 
         ///// <summary>
@@ -63,17 +48,17 @@ namespace DBriize.Utils
 
         public bool OpenGate()
         {
-            return gate.Set();
+            return gate == null || gate.Set();
         }
 
         public bool CloseGate()
         {
-            return gate.Reset();
+            return gate == null || gate.Reset();
         }
 
         public void Dispose()
         {
-            gate.Dispose();            
+            gate?.Dispose();            
         }
     }
 }

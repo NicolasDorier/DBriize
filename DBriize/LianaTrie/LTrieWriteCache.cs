@@ -21,7 +21,7 @@ namespace DBriize.LianaTrie
 
         internal LTrie Trie = null;
 
-        DbReaderWriterLock _sync_nodes = new DbReaderWriterLock();        
+        DbReaderWriterLock _sync_nodes;        
         //Key is GenerationMap line as string, Value is Kids in generation node of the last element of the generation map line
         Dictionary<string, byte[]> _nodes = new Dictionary<string, byte[]>();
 
@@ -51,7 +51,8 @@ namespace DBriize.LianaTrie
         //public LTrieWriteCache(IStorage storage, bool overWriteIsAllowed)
         public LTrieWriteCache(LTrie trie)
         {
-            Trie = trie;           
+			_sync_nodes = new DbReaderWriterLock(trie.IsSingleThread);
+			Trie = trie;           
 
             DefaultPointerLen = Trie.Storage.TrieSettings.POINTER_LENGTH;
 

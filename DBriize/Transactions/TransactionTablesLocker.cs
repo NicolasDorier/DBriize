@@ -25,7 +25,12 @@ namespace DBriize
         Dictionary<int, internSession> _acceptedSessions = new Dictionary<int, internSession>();
         List<int> _waitingSessionSequence = new List<int>();
 
-        DbReaderWriterLock _sync = new DbReaderWriterLock();
+        DbReaderWriterLock _sync;
+
+		public TransactionTablesLocker(bool isSingleThread)
+		{
+			_sync = new DbReaderWriterLock(isSingleThread);
+		}
 
         object lock_disposed = new object();
         bool disposed = false;
@@ -121,7 +126,7 @@ namespace DBriize
 
                     if (!ret)
                     {
-                        iSession.gator = new DbThreadsGator(false);
+                        iSession.gator = new DbThreadsGator(false, _sync.IsSingleThread);
                         _waitingSessions.Add(Environment.CurrentManagedThreadId, iSession);
                         _waitingSessionSequence.Add(Environment.CurrentManagedThreadId);
                     }

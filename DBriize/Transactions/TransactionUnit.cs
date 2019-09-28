@@ -32,7 +32,9 @@ namespace DBriize.Transactions
 
         public TransactionUnit(int transactionType, TransactionsCoordinator transactionsCoordinator, eTransactionTablesLockTypes lockType, params string[] tables)            
         {
-            this._transactionsCoordinator = transactionsCoordinator;
+			this._sync_transactionWriteTables = new DbReaderWriterLock(transactionsCoordinator._engine.Configuration.IsSingleThread);
+
+			this._transactionsCoordinator = transactionsCoordinator;
             this._transaction = new Transaction(transactionType, this, lockType, tables);        
         }
 
@@ -66,7 +68,7 @@ namespace DBriize.Transactions
         /// Lock for all tables definitions inside current transaction
         /// </summary>
         //DbReaderWriterLock _sync_transactionWriteTables = new DbReaderWriterLock();
-        DbReaderWriterLock _sync_transactionWriteTables = new DbReaderWriterLock();
+        DbReaderWriterLock _sync_transactionWriteTables;
         
         /// <summary>
         /// It holds all tables marked for possible mutations

@@ -39,7 +39,7 @@ namespace DBriize.TextSearch
                 InternalTable = true
             };
             Storage = new StorageLayer(Path.Combine(engine.MainFolder, TableFileName), LTrieSettings, engine.Configuration);
-            LTrie = new LTrie(Storage);
+            LTrie = new LTrie(Storage, engine.Configuration.IsSingleThread);
             LTrie.TableName = "DBreeze.TextIndexer";
 
             if (LTrie.Storage.Length > 100000)  //Recreating file if its size more then 100KB and it is empty
@@ -50,7 +50,7 @@ namespace DBriize.TextSearch
                     LTrie.Dispose();
 
                     Storage = new StorageLayer(Path.Combine(engine.MainFolder, TableFileName), LTrieSettings, engine.Configuration);
-                    LTrie = new LTrie(Storage);
+                    LTrie = new LTrie(Storage, engine.Configuration.IsSingleThread);
                     LTrie.TableName = "DBreeze.TextIndexer";
                 }
             }
