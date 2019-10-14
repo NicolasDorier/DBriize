@@ -18,7 +18,7 @@ namespace DBriize.Transactions
 {
     internal class TransactionsCoordinator
     {
-        DbReaderWriterLock _sync_transactions;
+        DbReaderWriterLock _sync_transactions = new DbReaderWriterLock();
         /// <summary>
         /// Dictionary of all active transactions. Key is ManagedThreadId
         /// </summary>
@@ -28,10 +28,8 @@ namespace DBriize.Transactions
 
         public TransactionsCoordinator(DBriizeEngine engine)
         {
-			this.ThreadsGator = new DbThreadsGator(true, engine.Configuration.IsSingleThread);
-            this._engine = engine;
-			_sync_transactions = new DbReaderWriterLock(engine.Configuration.IsSingleThread);
-		}
+            this._engine = engine;            
+        }
 
         /// <summary>
         /// Fast access to the Schema object.
@@ -278,7 +276,7 @@ namespace DBriize.Transactions
         #region "Registering Tables for Writing or Read-Commited before making operations, for avoiding deadLocks"
 
         //System.Threading.ManualResetEvent mreWriteTransactionLock = new System.Threading.ManualResetEvent(true);
-        DbThreadsGator ThreadsGator;
+        DbThreadsGator ThreadsGator = new DbThreadsGator();
         object _sync_dl = new object();
 
         /// <summary>

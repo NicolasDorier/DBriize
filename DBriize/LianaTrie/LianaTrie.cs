@@ -60,7 +60,7 @@ namespace DBriize.LianaTrie
         /// <summary>
         /// Coordinator of nested tables
         /// </summary>
-        internal NestedTablesCoordinator NestedTablesCoordinator;
+        internal NestedTablesCoordinator NestedTablesCoordinator = new NestedTablesCoordinator();
         internal bool NestedTable = false;
 
         /// <summary>
@@ -81,10 +81,9 @@ namespace DBriize.LianaTrie
         /// Liana Trie
         /// </summary>
         /// <param name="storage"></param>
-        public LTrie(IStorage storage, bool isSingleThread)
+        public LTrie(IStorage storage)
         {
-			NestedTablesCoordinator = new NestedTablesCoordinator(isSingleThread);
-			Storage = storage;
+            Storage = storage;
 
             try
             {
@@ -1827,6 +1826,8 @@ namespace DBriize.LianaTrie
             }
         }
 
-		public bool IsSingleThread => NestedTablesCoordinator.Sync_NestedTables.IsSingleThread;
-	}
+
+
+        
+    }
 }

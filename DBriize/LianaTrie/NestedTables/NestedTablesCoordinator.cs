@@ -25,12 +25,7 @@ namespace DBriize.LianaTrie
         /// where key is root_start
         /// </summary>
         Dictionary<ulong, Dictionary<long, NestedTableInternal>> _nestedTables = new Dictionary<ulong, Dictionary<long, NestedTableInternal>>();
-        public DbReaderWriterLock Sync_NestedTables;
-
-		public NestedTablesCoordinator(bool isSingleThread)
-		{
-			Sync_NestedTables = new DbReaderWriterLock(isSingleThread);
-		}
+        public DbReaderWriterLock Sync_NestedTables = new DbReaderWriterLock();
 
         Dictionary<string, ulong> _nestedTblsViaKeys = new Dictionary<string, ulong>();
 

@@ -19,42 +19,40 @@ namespace DBriize.Utils
     /// </summary>
     public class DbReaderWriterLock
     {
-        ReaderWriterLockSlim rwls;
-        public DbReaderWriterLock(bool isSingleThread)
-        {
-			rwls = isSingleThread ? null : new ReaderWriterLockSlim();
-        }
+        ReaderWriterLockSlim rwls = new ReaderWriterLockSlim();
 
-		public bool IsSingleThread => rwls == null;
+        public DbReaderWriterLock()
+        {
+        }
 
         public void EnterReadLock()
         {
-            rwls?.EnterReadLock();
+            rwls.EnterReadLock();
         }
 
         public void ExitReadLock()
         {
-            rwls?.ExitReadLock();
+            rwls.ExitReadLock();
         }
 
         public void EnterWriteLock()
         {
-            rwls?.EnterWriteLock();
+            rwls.EnterWriteLock();
         }
 
         public void ExitWriteLock()
         {
-            rwls?.ExitWriteLock();
+            rwls.ExitWriteLock();
         }
 
         public void EnterUpgradeableReadLock()
         {
-            rwls?.EnterUpgradeableReadLock();
+            rwls.EnterUpgradeableReadLock();
         }
 
         public void ExitUpgradeableReadLock()
         {
-            rwls?.ExitUpgradeableReadLock();
+            rwls.ExitUpgradeableReadLock();
         }
     }
 }

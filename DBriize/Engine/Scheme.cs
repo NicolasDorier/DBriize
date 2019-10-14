@@ -43,7 +43,7 @@ namespace DBriize
         //User files counter
         ulong LastFileNumber = 10000000;
 
-        DbReaderWriterLock _sync_openTablesHolder;
+        DbReaderWriterLock _sync_openTablesHolder = new DbReaderWriterLock();
         Dictionary<string, OpenTable> _openTablesHolder = new Dictionary<string, OpenTable>();
 
         bool _disposed = false;
@@ -51,7 +51,7 @@ namespace DBriize
         public Scheme(DBriizeEngine DBriizeEngine)
         {
             Engine = DBriizeEngine;
-			_sync_openTablesHolder = new DbReaderWriterLock(DBriizeEngine.Configuration.IsSingleThread);
+
             this.OpenSchema();
         }
 
@@ -106,7 +106,7 @@ namespace DBriize
 
             Storage = new StorageLayer(Path.Combine(Engine.MainFolder, SchemaFileName), LTrieSettings, Engine.Configuration);
 
-            LTrie = new LTrie(Storage, Engine.Configuration.IsSingleThread);
+            LTrie = new LTrie(Storage);
 
             LTrie.TableName = "DBreeze.Scheme";
 
@@ -471,7 +471,7 @@ namespace DBriize
 
                     //storage = new StorageLayer(Path.Combine(Engine.MainFolder, fileName.ToString()), ts, Engine.Configuration);
 
-                    LTrie trie = new LTrie(storage, Engine.Configuration.IsSingleThread);
+                    LTrie trie = new LTrie(storage);
 
                     //Setting LTrie user table name
                     trie.TableName = userTableName;

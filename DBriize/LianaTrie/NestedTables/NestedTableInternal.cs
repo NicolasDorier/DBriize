@@ -69,7 +69,7 @@ namespace DBriize.DataTypes
 
                 //Then trie receives ITableFile wrapper with new settings
 
-                table = new LTrie(_storage, masterTrie.IsSingleThread);
+                table = new LTrie(_storage);
             }
         }
 

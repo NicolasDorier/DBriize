@@ -191,7 +191,7 @@ namespace DBriize
                     _transactionsJournal = new TransactionsJournal(this);
 
                     //Initializes transaction locker, who can help block tables of writing and reading threads
-                    _transactionTablesLocker = new TransactionTablesLocker(Configuration.IsSingleThread);
+                    _transactionTablesLocker = new TransactionTablesLocker();
 
                     //Initializing 
                     DeferredIndexer = new TextDeferredIndexer(this);

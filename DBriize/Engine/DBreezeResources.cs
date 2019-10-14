@@ -56,7 +56,7 @@ namespace DBriize
                 InternalTable = true
             };
             Storage = new StorageLayer(Path.Combine(engine.MainFolder, TableFileName), LTrieSettings, engine.Configuration);
-            LTrie = new LTrie(Storage, engine.Configuration.IsSingleThread);
+            LTrie = new LTrie(Storage);
             LTrie.TableName = "DBreezeResources";
         }
 

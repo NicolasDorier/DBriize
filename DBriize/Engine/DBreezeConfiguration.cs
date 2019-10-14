@@ -60,13 +60,11 @@ namespace DBriize
             RemoteInstance
         }
 
-		public bool IsSingleThread { get; set; }
-
-		/// <summary>
-		/// DISK, MEMORY or Remote Instance. DEFAULT IS DISK,
-		/// DBriizeDataFolderName must be supplied.
-		/// </summary>
-		public eStorage Storage { get; set; }
+        /// <summary>
+        /// DISK, MEMORY or Remote Instance. DEFAULT IS DISK,
+        /// DBriizeDataFolderName must be supplied.
+        /// </summary>
+        public eStorage Storage { get; set; }
 
 
         /// <summary>
