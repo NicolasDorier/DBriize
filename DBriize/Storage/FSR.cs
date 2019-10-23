@@ -760,11 +760,9 @@ namespace DBriize.Storage
             byte[] btRoll = null;
 
             bool flushRollback = false;
-			long fsRollbackPos = -1;
-			long fsDataPos = -1;
-
-			//first loop for saving rollback data
-			foreach (var de in _randBuf.OrderBy(r => r.Key))               
+           
+            //first loop for saving rollback data
+            foreach (var de in _randBuf.OrderBy(r => r.Key))               
             {
                 offset = ((ulong)de.Key).To_8_bytes_array_BigEndian().Substring(8 - DefaultPointerLen, DefaultPointerLen);
 
@@ -774,32 +772,23 @@ namespace DBriize.Storage
                 //Reading from dataFile values which must be rolled back
                 btRoll = new byte[de.Value.Length];
 
-				if (de.Key != fsDataPos)
-				{
-					_fsData.Position = de.Key;
-				}
-				_fsData.Read(btRoll, 0, btRoll.Length);
-				fsDataPos = de.Key + btRoll.Length;
-				//Console.WriteLine("2;{0};{1}", de.Key, ((btRoll == null) ? -1 : btRoll.Length));
+                _fsData.Position = de.Key;
+                _fsData.Read(btRoll, 0, btRoll.Length);
+                //Console.WriteLine("2;{0};{1}", de.Key, ((btRoll == null) ? -1 : btRoll.Length));
 
-				//Forming protocol for rollback
-				btRoll = new byte[] { 1 }
+                //Forming protocol for rollback
+                btRoll = new byte[] { 1 }
                            .ConcatMany(
                            offset,
                            ((uint)btRoll.Length).To_4_bytes_array_BigEndian(),
                            btRoll
                            );
 
-				//Writing rollback
-				if (eofRollback != fsRollbackPos)
-				{
-					_fsRollback.Position = eofRollback;
-				}
+                //Writing rollback
+                _fsRollback.Position = eofRollback;
                 _fsRollback.Write(btRoll, 0, btRoll.Length);
-				fsRollbackPos = eofRollback + btRoll.Length;
 
-
-				if (_backupIsActive)
+                if (_backupIsActive)
                 {
                     this._configuration.Backup.WriteBackupElement(ulFileName, 1, eofRollback, btRoll);
                 }
