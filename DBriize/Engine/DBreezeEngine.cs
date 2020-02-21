@@ -1,5 +1,5 @@
 ﻿/* 
-  Copyright (C) 2012 DBriize.tiesky.com / Alex Solovyov / Ivars Sudmalis.
+  Copyright (C) 2012 dbreeze.tiesky.com / Alex Solovyov / Ivars Sudmalis.
   It's a free software for those, who think that it should be free.
 */
 
@@ -65,29 +65,29 @@ namespace DBriize
         /// </summary>
         public Action<string, object> BackgroundTasksExternalNotifier = null;
         /// <summary>
-        /// DBriize Configuration.
+        /// Dbreeze Configuration.
         /// For now BackupPlan is included.
         /// Later can be added special settings for each entity defined by string pattern.
         /// </summary>
         internal DBriizeConfiguration Configuration = new DBriizeConfiguration();
 
         /// <summary>
-        /// For DBriizeRemoteEngine wrapper
+        /// For DbreezeRemoteEngine wrapper
         /// </summary>
         internal DBriizeEngine() { }
 
         /// <summary>
-        /// DBriize instantiator
+        /// Dbreeze instantiator
         /// </summary>
-        /// <param name="DBriizeConfiguration"></param>
-        public DBriizeEngine(DBriizeConfiguration DBriizeConfiguration)
+        /// <param name="dbreezeConfiguration"></param>
+        public DBriizeEngine(DBriizeConfiguration dbreezeConfiguration)
         {
-            ConstructFromConfiguration(DBriizeConfiguration);
+            ConstructFromConfiguration(dbreezeConfiguration);
 
             //if (Configuration != null)
-            //    Configuration = DBriizeConfiguration;
+            //    Configuration = dbreezeConfiguration;
             
-            ////Setting up in backup DBriizeFolderName, there must be found at least TransJournal and Scheme.
+            ////Setting up in backup DbreezeFolderName, there must be found at least TransJournal and Scheme.
             ////Configuration.Backup.SynchronizeBackup has more information
             //if (Configuration.Backup.IsActive)
             //{
@@ -107,17 +107,17 @@ namespace DBriize
         }
 
         /// <summary>
-        /// Constructing DBriize from DBriizeConfiguration
+        /// Constructing Dbreeze from dbreezeConfiguration
         /// </summary>
-        /// <param name="DBriizeConfiguration"></param>
-        internal void ConstructFromConfiguration(DBriizeConfiguration DBriizeConfiguration)
+        /// <param name="dbreezeConfiguration"></param>
+        internal void ConstructFromConfiguration(DBriizeConfiguration dbreezeConfiguration)
         {
              if (Configuration != null)
-                Configuration = DBriizeConfiguration;
+                Configuration = dbreezeConfiguration;
              else
                  throw new Exception("DBriize.DBriizeEngine.DBriizeEngine: please supply DBriizeConfiguration");
             
-            //Setting up in backup DBriizeFolderName, there must be found at least TransJournal and Scheme.
+            //Setting up in backup DbreezeFolderName, there must be found at least TransJournal and Scheme.
             //Configuration.Backup.SynchronizeBackup has more information
             if (Configuration.Backup.IsActive)
             {
@@ -127,7 +127,7 @@ namespace DBriize
                 //Configuration.Backup.SynchronizeBackup();
             }
                         
-            if (DBriizeConfiguration.Storage == DBriizeConfiguration.eStorage.RemoteInstance && !RemoteEngine)
+            if (dbreezeConfiguration.Storage == DBriizeConfiguration.eStorage.RemoteInstance && !RemoteEngine)
                 throw new Exception("DBriize.DBriizeEngine.DBriizeEngine: remote instance must be initiated via new DBriizeRemoteEngine");
 
             MainFolder = Configuration.DBriizeDataFolderName;
@@ -219,7 +219,7 @@ namespace DBriize
             //    return;
 
             DBisOperable = false;
-            DBisOperableReason = "DBreezeEngine.Dispose";
+            DBisOperableReason = "DBriizeEngine.Dispose";
             //Disposed = true;
 
             //Disposing all transactions

@@ -1,5 +1,5 @@
 ﻿/* 
-  Copyright (C) 2012 DBriize.tiesky.com / Alex Solovyov / Ivars Sudmalis.
+  Copyright (C) 2012 dbreeze.tiesky.com / Alex Solovyov / Ivars Sudmalis.
   It's a free software for those, who think that it should be free.
 */
 
@@ -83,7 +83,7 @@ namespace DBriize.Utils
 
 
 ///* 
-//  Copyright (C) 2012 DBriize.tiesky.com / Alex Solovyov / Ivars Sudmalis.
+//  Copyright (C) 2012 dbreeze.tiesky.com / Alex Solovyov / Ivars Sudmalis.
 //  It's a free software for those, who think that it should be free.
 //*/
 

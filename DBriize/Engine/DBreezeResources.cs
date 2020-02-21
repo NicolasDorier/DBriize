@@ -1,5 +1,5 @@
 ﻿/* 
-  Copyright (C) 2012 DBriize.tiesky.com / Alex Solovyov / Ivars Sudmalis.
+  Copyright (C) 2012 dbreeze.tiesky.com / Alex Solovyov / Ivars Sudmalis.
   It's a free software for those, who think that it should be free.
 */
 using System;
@@ -30,7 +30,7 @@ namespace DBriize
         TrieSettings LTrieSettings = null;
         IStorage Storage = null;
         LTrie LTrie = null;
-        static string TableFileName = "_DBreezeResources";        
+        static string TableFileName = "_DBriizeResources";        
         long init = DateTime.UtcNow.Ticks;        
         int disposed = 0;
 
@@ -57,7 +57,7 @@ namespace DBriize
             };
             Storage = new StorageLayer(Path.Combine(engine.MainFolder, TableFileName), LTrieSettings, engine.Configuration);
             LTrie = new LTrie(Storage);
-            LTrie.TableName = "DBreezeResources";
+            LTrie.TableName = "DBriizeResources";
         }
 
         /// <summary>
@@ -197,7 +197,7 @@ namespace DBriize
             }
             catch (Exception ex)
             {
-                throw DBriizeException.Throw(DBriizeException.eDBriizeExceptions.DBriize_RESOURCES_CONCERNING, "in Insert", ex);
+                throw DBriizeException.Throw(DBriizeException.eDBriizeExceptions.DBREEZE_RESOURCES_CONCERNING, "in Insert", ex);
             }
             finally
             {
@@ -352,7 +352,7 @@ namespace DBriize
             }
             catch (Exception ex)
             {
-                throw DBriizeException.Throw(DBriizeException.eDBriizeExceptions.DBriize_RESOURCES_CONCERNING, "in Insert batch", ex);
+                throw DBriizeException.Throw(DBriizeException.eDBriizeExceptions.DBREEZE_RESOURCES_CONCERNING, "in Insert batch", ex);
             }
             finally
             {
@@ -391,7 +391,7 @@ namespace DBriize
             }
             catch (Exception ex)
             {
-                throw DBriizeException.Throw(DBriizeException.eDBriizeExceptions.DBriize_RESOURCES_CONCERNING, "in Remove batch", ex);
+                throw DBriizeException.Throw(DBriizeException.eDBriizeExceptions.DBREEZE_RESOURCES_CONCERNING, "in Remove batch", ex);
             }
             finally
             {
@@ -420,7 +420,7 @@ namespace DBriize
             }
             catch (Exception ex)
             {
-                throw DBriizeException.Throw(DBriizeException.eDBriizeExceptions.DBriize_RESOURCES_CONCERNING, "in Remove", ex);
+                throw DBriizeException.Throw(DBriizeException.eDBriizeExceptions.DBREEZE_RESOURCES_CONCERNING, "in Remove", ex);
             }
             finally
             {
@@ -432,7 +432,7 @@ namespace DBriize
 
         /// <summary>
         /// SelectStartsWith.
-        /// Value instance, when byte[], must stay immutable, please use DBriize.Utils.CloneArray
+        /// Value instance, when byte[], must stay immutable, please use Dbreeze.Utils.CloneArray
         /// </summary>
         /// <typeparam name="TValue"></typeparam>
         /// <param name="resourceNameStartsWith"></param>
@@ -498,7 +498,7 @@ namespace DBriize
 
         /// <summary>
         /// Gets resources of the same type as a batch from memory or database (if not yet loaded).
-        /// Value instance, when byte[], must stay immutable, please use DBriize.Utils.CloneArray
+        /// Value instance, when byte[], must stay immutable, please use Dbreeze.Utils.CloneArray
         /// </summary>
         /// <typeparam name="TValue"></typeparam>
         /// <param name="resourcesNames"></param>
@@ -574,7 +574,7 @@ namespace DBriize
                         }
                         catch (Exception ex)
                         {
-                            throw DBriizeException.Throw(DBriizeException.eDBriizeExceptions.DBriize_RESOURCES_CONCERNING, "in Select 1", ex);
+                            throw DBriizeException.Throw(DBriizeException.eDBriizeExceptions.DBREEZE_RESOURCES_CONCERNING, "in Select 1", ex);
                         }
                         finally
                         {
@@ -595,7 +595,7 @@ namespace DBriize
             }
             catch (System.Exception ex)
             {
-                throw DBriizeException.Throw(DBriizeException.eDBriizeExceptions.DBriize_RESOURCES_CONCERNING, "in Select 2", ex);
+                throw DBriizeException.Throw(DBriizeException.eDBriizeExceptions.DBREEZE_RESOURCES_CONCERNING, "in Select 2", ex);
             }
             finally
             {
@@ -611,7 +611,7 @@ namespace DBriize
 
         /// <summary>
         /// Gets resource from memory or database (if not yet loaded)
-        /// Value instance, when byte[], must stay immutable, please use DBriize.Utils.CloneArray
+        /// Value instance, when byte[], must stay immutable, please use Dbreeze.Utils.CloneArray
         /// </summary>
         /// <typeparam name="TValue"></typeparam>
         /// <param name="resourceName"></param>
@@ -673,7 +673,7 @@ namespace DBriize
                     }
                     catch (Exception ex)
                     {
-                        throw DBriizeException.Throw(DBriizeException.eDBriizeExceptions.DBriize_RESOURCES_CONCERNING, "in Select 1", ex);
+                        throw DBriizeException.Throw(DBriizeException.eDBriizeExceptions.DBREEZE_RESOURCES_CONCERNING, "in Select 1", ex);
                     }
                     finally
                     {
@@ -688,7 +688,7 @@ namespace DBriize
             }
             catch (System.Exception ex)
             {
-                throw DBriizeException.Throw(DBriizeException.eDBriizeExceptions.DBriize_RESOURCES_CONCERNING, "in Select 2", ex);
+                throw DBriizeException.Throw(DBriizeException.eDBriizeExceptions.DBREEZE_RESOURCES_CONCERNING, "in Select 2", ex);
             }
             finally
             {

@@ -1,5 +1,5 @@
 ﻿/* 
-  Copyright (C) 2012 DBriize.tiesky.com / Alex Solovyov / Ivars Sudmalis.
+  Copyright (C) 2012 dbreeze.tiesky.com / Alex Solovyov / Ivars Sudmalis.
   It's a free software for those, who think that it should be free.
 */
 
@@ -31,9 +31,9 @@ namespace DBriize.LianaTrie
             }
         }
 
-        public DBriizeConfiguration DBriizeConfiguration
+        public DBriizeConfiguration DbreezeConfiguration
         {
-            get { return this._masterStorage.DBriizeConfiguration; }
+            get { return this._masterStorage.DbreezeConfiguration; }
         }
 
         public string Table_FileName

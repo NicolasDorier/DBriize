@@ -1,5 +1,5 @@
 ﻿/* 
-  Copyright (C) 2012 DBriize.tiesky.com / Alex Solovyov / Ivars Sudmalis.
+  Copyright (C) 2012 dbreeze.tiesky.com / Alex Solovyov / Ivars Sudmalis.
   It's a free software for those, who think that it should be free.
 */
 
@@ -1570,6 +1570,8 @@ namespace DBriize.LianaTrie.Iterations
             byte[] generationMapLine = new byte[1] { 0 };
             byte[] gml = null;
             LTrieGenerationNode gn1 = null;
+            byte[] key = null;
+            LTrieRow row = null;
 
 
 
@@ -1617,6 +1619,9 @@ namespace DBriize.LianaTrie.Iterations
 
         private IEnumerable<LTrieRow> ItFrwStartsWith_Prefix_Helper(LTrieGenerationNode gn, byte[] generationMapLine, int deep, bool useCache)
         {
+            byte[] key = null;
+            LTrieRow row = null;
+
             byte[] gml = null;
 
 

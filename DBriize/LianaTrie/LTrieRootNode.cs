@@ -1,5 +1,5 @@
 ﻿/* 
-  Copyright (C) 2012 DBriize.tiesky.com / Alex Solovyov / Ivars Sudmalis.
+  Copyright (C) 2012 dbreeze.tiesky.com / Alex Solovyov / Ivars Sudmalis.
   It's a free software for those, who think that it should be free.
 */
 
@@ -97,7 +97,7 @@ namespace DBriize.LianaTrie
             //Second byte is file protocol identifier starting from 1 up to 255    
             this.LinkToZeroNode = me.Substring(2, DefaultPointerLen);
             this.RecordsCount = me.Substring(2 + DefaultPointerLen, 8).To_UInt64_BigEndian();
-            //DBriize identifier 18 symbols
+            //dbreeze identifier 18 symbols
 
         }
 
@@ -108,15 +108,15 @@ namespace DBriize.LianaTrie
         {
             byte[] newRoot = null;
 
-            //DBriize.tiesky.com (18 bytes)
-            byte[] DBriize = new byte[] { 0x64, 0x62, 0x72, 0x65, 0x65, 0x7A, 0x65, 0x2E, 0x74, 0x69, 0x65, 0x73, 0x6B, 0x79, 0x2E, 0x63, 0x6F, 0x6D };
+            //dbreeze.tiesky.com (18 bytes)
+            byte[] dbreeze = new byte[] { 0x64, 0x62, 0x72, 0x65, 0x65, 0x7A, 0x65, 0x2E, 0x74, 0x69, 0x65, 0x73, 0x6B, 0x79, 0x2E, 0x63, 0x6F, 0x6D };
 
             newRoot = newRoot.ConcatMany(
                 new byte[] { 1 },  //For supporting Memory Element. It shows that Root Is created                
                 new byte[] { 1 }, //-File protocol identifier
                 this.LinkToZeroNode,                         //Link to zero node
                 this.RecordsCount.To_8_bytes_array_BigEndian(),
-                DBriize
+                dbreeze
                 );
 
             newRoot = newRoot.EnlargeByteArray_LittleEndian(DefaultRootSize);

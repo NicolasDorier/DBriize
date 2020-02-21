@@ -1,5 +1,5 @@
 ﻿/* 
-  Copyright (C) 2012 DBriize.tiesky.com / Alex Solovyov / Ivars Sudmalis.
+  Copyright (C) 2012 dbreeze.tiesky.com / Alex Solovyov / Ivars Sudmalis.
   It's a free software for those, who think that it should be free.
 */
 using System;
@@ -71,9 +71,9 @@ namespace DBriize.Storage
             get { return _tableStorage.TrieSettings; }
         }
 
-        public DBriizeConfiguration DBriizeConfiguration
+        public DBriizeConfiguration DbreezeConfiguration
         {
-            get { return _tableStorage.DBriizeConfiguration; }
+            get { return _tableStorage.DbreezeConfiguration; }
         }
 
         public string Table_FileName

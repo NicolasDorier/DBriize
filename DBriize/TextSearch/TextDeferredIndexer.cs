@@ -1,5 +1,5 @@
 ﻿/* 
-  Copyright (C) 2012 DBriize.tiesky.com / Alex Solovyov / Ivars Sudmalis.
+  Copyright (C) 2012 dbreeze.tiesky.com / Alex Solovyov / Ivars Sudmalis.
   It's a free software for those, who think that it should be free.
 */
 
@@ -25,7 +25,7 @@ namespace DBriize.TextSearch
         TrieSettings LTrieSettings = null;
         IStorage Storage = null;
         LTrie LTrie = null;
-        static string TableFileName = "_DBreezeTextIndexer";
+        static string TableFileName = "_DBriizeTextIndexer";
         object lock_operation = new object();
         long init = DateTime.UtcNow.Ticks;
         int inDeferredIndexer = 0;
@@ -40,7 +40,7 @@ namespace DBriize.TextSearch
             };
             Storage = new StorageLayer(Path.Combine(engine.MainFolder, TableFileName), LTrieSettings, engine.Configuration);
             LTrie = new LTrie(Storage);
-            LTrie.TableName = "DBreeze.TextIndexer";
+            LTrie.TableName = "DBriize.TextIndexer";
 
             if (LTrie.Storage.Length > 100000)  //Recreating file if its size more then 100KB and it is empty
             {
@@ -51,7 +51,7 @@ namespace DBriize.TextSearch
 
                     Storage = new StorageLayer(Path.Combine(engine.MainFolder, TableFileName), LTrieSettings, engine.Configuration);
                     LTrie = new LTrie(Storage);
-                    LTrie.TableName = "DBreeze.TextIndexer";
+                    LTrie.TableName = "DBriize.TextIndexer";
                 }
             }
 

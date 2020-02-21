@@ -47,7 +47,7 @@ namespace DBriize.Storage
         /// </summary>
         public string DataBaseFolder { get; set; }
         /// <summary>
-        /// Place where reside incremnetal DBriize backup files
+        /// Place where reside incremnetal dbreeze backup files
         /// </summary>
         public string BackupFolder { get; set; }
 

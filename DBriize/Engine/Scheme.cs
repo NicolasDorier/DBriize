@@ -1,5 +1,5 @@
 ﻿/* 
-  Copyright (C) 2012 DBriize.tiesky.com / Alex Solovyov / Ivars Sudmalis.
+  Copyright (C) 2012 dbreeze.tiesky.com / Alex Solovyov / Ivars Sudmalis.
   It's a free software for those, who think that it should be free.
 */
 
@@ -31,7 +31,9 @@ namespace DBriize
         /// </summary>
         internal bool AutoCloseOpenTables = true;
 
-        static string SchemaFileName = "_DBreezeSchema";
+        static string Copyright = "DBriize.tiesky.com";
+
+        static string SchemaFileName = "_DBriizeSchema";
 
         //For System Tables or Records we reserve "@@@@" sequence
         static string LastFileNumberKeyName = "@@@@LastFileNumber";
@@ -108,7 +110,7 @@ namespace DBriize
 
             LTrie = new LTrie(Storage);
 
-            LTrie.TableName = "DBreeze.Scheme";
+            LTrie.TableName = "DBriize.Scheme";
 
             //Reading lastFileNumber
             ReadUserLastFileNumber();
@@ -191,7 +193,7 @@ namespace DBriize
                 }
                 else
                 {
-                    //Standard path (DBriize mainFolder + fileName)
+                    //Standard path (Dbreeze mainFolder + fileName)
                     return Path.Combine(Engine.MainFolder, fileName.ToString());
                 }
             }
@@ -297,7 +299,7 @@ namespace DBriize
 
 
             //Schema protocol: 2 bytes - protocol version, other data
-            //For protocol 1: first 8 bytes will be TheFileName, starting from db10000-dbN (0-N ulong). up to 10000 are reserved for DBriize.
+            //For protocol 1: first 8 bytes will be TheFileName, starting from db10000-dbN (0-N ulong). up to 10000 are reserved for dbreeze.
 
             //Table names are UTF-8 based, no limits
 

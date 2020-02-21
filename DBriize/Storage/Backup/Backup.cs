@@ -1,5 +1,5 @@
 ﻿/* 
-  Copyright (C) 2012 DBriize.tiesky.com / Alex Solovyov / Ivars Sudmalis.
+  Copyright (C) 2012 dbreeze.tiesky.com / Alex Solovyov / Ivars Sudmalis.
   It's a free software for those, who think that it should be free.
 */
 
@@ -130,13 +130,13 @@ namespace DBriize.Storage
             {
                 switch (fileName)
                 {
-                    case "_DBreezeSchema":
+                    case "_DBriizeSchema":
                         return UInt64.MaxValue - 1;
-                    case "_DBreezeTranJrnl":
+                    case "_DBriizeTranJrnl":
                         return UInt64.MaxValue - 2;
-                    case "_DBreezeTextIndexer":
+                    case "_DBriizeTextIndexer":
                         return UInt64.MaxValue - 3;
-                    case "_DBreezeResources":
+                    case "_DBriizeResources":
                         return UInt64.MaxValue - 4;
                     default:
                         return Convert.ToUInt64(fileName);
@@ -154,13 +154,13 @@ namespace DBriize.Storage
                 switch (filenumber)
                 {
                     case (UInt64.MaxValue - 1):
-                        return "_DBreezeSchema";
+                        return "_DBriizeSchema";
                     case (UInt64.MaxValue - 2):
-                        return "_DBreezeTranJrnl";
+                        return "_DBriizeTranJrnl";
                     case (UInt64.MaxValue - 3):
-                        return "_DBreezeTextIndexer";
+                        return "_DBriizeTextIndexer";
                     case (UInt64.MaxValue - 4):
-                        return "_DBreezeResources";
+                        return "_DBriizeResources";
                     default:
                         return filenumber.ToString();
                 }

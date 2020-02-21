@@ -1,5 +1,5 @@
 ﻿/* 
-  Copyright (C) 2012 DBriize.tiesky.com / Alex Solovyov / Ivars Sudmalis.
+  Copyright (C) 2012 dbreeze.tiesky.com / Alex Solovyov / Ivars Sudmalis.
   It's a free software for those, who think that it should be free.
 */
 using System;
@@ -26,14 +26,14 @@ namespace DBriize
         /// <summary>
         /// DBriizeRemoteEngine instantiator
         /// </summary>
-        /// <param name="DBriizeConfiguration"></param>
-        public DBriizeRemoteEngine(DBriizeConfiguration DBriizeConfiguration)            
+        /// <param name="dbreezeConfiguration"></param>
+        public DBriizeRemoteEngine(DBriizeConfiguration dbreezeConfiguration)            
         {
 
-            if (DBriizeConfiguration == null)
-                throw new Exception("DBriize.DBriizeRemoteEngine.DBriizeRemoteEngine:  DBriizeConfiguration is NULL");
+            if (dbreezeConfiguration == null)
+                throw new Exception("DBriize.DbreezeRemoteEngine.DbreezeRemoteEngine:  dbreezeConfiguration is NULL");
 
-            conf = DBriizeConfiguration;
+            conf = dbreezeConfiguration;
             this.RemoteEngine = true;
                         
         }

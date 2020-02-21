@@ -1,5 +1,5 @@
 ﻿/* 
-  Copyright (C) 2012 DBriize.tiesky.com / Alex Solovyov / Ivars Sudmalis.
+  Copyright (C) 2012 dbreeze.tiesky.com / Alex Solovyov / Ivars Sudmalis.
   It's a free software for those, who think that it should be free.
 */
 
@@ -22,7 +22,7 @@ namespace DBriize.Transactions
     public class TransactionsJournal : IDisposable
     {
         internal DBriizeEngine Engine=null;
-        static string JournalFileName = "_DBreezeTranJrnl";
+        static string JournalFileName = "_DBriizeTranJrnl";
 
         TrieSettings LTrieSettings = null;
         IStorage Storage = null;
@@ -67,7 +67,7 @@ namespace DBriize.Transactions
                  //Storage = new TrieDiskStorage(Path.Combine(Engine.MainFolder, JournalFileName), LTrieSettings, Engine.Configuration);
                  LTrie = new LTrie(Storage);
 
-                 LTrie.TableName = "DBreeze.TranJournal";
+                 LTrie.TableName = "DBriize.TranJournal";
 
                  this.RestoreNotFinishedTransactions();
             }
@@ -175,7 +175,7 @@ namespace DBriize.Transactions
             //    //We don'T make DBisOperable = false;                         
             //    throw ex;
             //}
-            catch (Exception)
+            catch (Exception ex)
             {
                 //BRINGS TO DB NOT OPERATABLE
                 this.Engine.DBisOperable = false;
@@ -288,7 +288,7 @@ namespace DBriize.Transactions
                        
                         Storage = new StorageLayer(Path.Combine(Engine.MainFolder, JournalFileName), LTrieSettings, Engine.Configuration);                        
                         LTrie = new LTrie(Storage);
-                        LTrie.TableName = "DBreeze.TranJournal";
+                        LTrie.TableName = "DBriize.TranJournal";
                     }
                 }
 

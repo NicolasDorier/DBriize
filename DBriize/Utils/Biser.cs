@@ -1,5 +1,5 @@
 ﻿/* 
-  Copyright (C) 2012 DBriize.tiesky.com / Alex Solovyov / Ivars Sudmalis.
+  Copyright (C) 2012 dbreeze.tiesky.com / Alex Solovyov / Ivars Sudmalis.
   It's a free software for those, who think that it should be free.
 
   This class uses parts of code from https://github.com/topas/VarintBitConverter. That is published under BSD license [27.06.2016].
@@ -573,6 +573,7 @@ namespace DBriize.Utils
                     encB = encB.GZip_Decompress();                    
                     break;
             }
+            
 
             byte mode = 0;
             byte[] sizer = new byte[4];

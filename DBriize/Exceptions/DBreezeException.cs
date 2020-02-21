@@ -1,5 +1,5 @@
 ﻿/* 
-  Copyright (C) 2012 DBriize.tiesky.com / Alex Solovyov / Ivars Sudmalis.
+  Copyright (C) 2012 dbreeze.tiesky.com / Alex Solovyov / Ivars Sudmalis.
   It's a free software for those, who think that it should be free.
 */
 
@@ -138,7 +138,7 @@ namespace DBriize.Exceptions
             /// <summary>
             /// The rest must be supplied via extra params
             /// </summary>
-            DBriize_RESOURCES_CONCERNING
+            DBREEZE_RESOURCES_CONCERNING
         }
 
         public static Exception Throw(Exception innerException)
@@ -310,8 +310,8 @@ namespace DBriize.Exceptions
                 case eDBriizeExceptions.BACKUP_FOLDER_CREATE_FAILED:
                     return new DBriizeException(String.Format("Backup folder creation has failed"), innerException);
 
-                case eDBriizeExceptions.DBriize_RESOURCES_CONCERNING:
-                    return new DBriizeException(String.Format("DBriize.DBriizeResources err: \"{0}\"!", message), innerException);
+                case eDBriizeExceptions.DBREEZE_RESOURCES_CONCERNING:
+                    return new DBriizeException(String.Format("DBriize.DbreezeResources err: \"{0}\"!", message), innerException);
             }
 
             //Fake
